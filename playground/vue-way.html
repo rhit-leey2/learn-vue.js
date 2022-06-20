@@ -16,7 +16,30 @@
         div.innerHTML = 'helloworld';
         var viewModel = {};
 
-        Object.defineProperty();
+        // Object.defineProperty(대상 객체, 객체의 속성, {
+        //     정의할 내용
+        // });
+        
+        (function () {
+            function init() {
+                Object.defineProperty(viewModel, 'str',  {
+                //when accessing properties
+                get: function() {
+                    console.log('접근');
+                },
+                //when assigning values to properties
+                set: function(newValue) {
+                    console.log('할당', newValue);
+                    div.innerHTML = newValue;
+                }
+                });
+            }
+
+            function render(value) {
+                div.innerHTML = value;
+            }
+            init();
+        })();
 
     </script>
 </body>
